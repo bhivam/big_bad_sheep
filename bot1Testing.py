@@ -6,7 +6,7 @@ ALL_DIR = [(1, 1), (1, -1), (1, 0), (0, 1),
            (0, -1), (-1, 1), (-1, 0), (-1, -1)]
 PEN_LOCS = set()
 
-f = open("storing_info", "r")
+f = open("storing_info1", "r")
 rawStates = f.readlines()
 
 rawStates = [i.strip().replace("(", "").replace(")", "").replace(

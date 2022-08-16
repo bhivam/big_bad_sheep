@@ -12,17 +12,21 @@ from random import Random
 #            0.12739401, -0.1376795,  -0.1171069,   0.06253214, -0.11858945, -0.1185348,
 #            -0.08531716, -0.07784065, -0.15596228)
 
-weights = (4.97823080e+00, -5.99445100e-02, -8.28917853e-02,  9.51229721e-02,
-           8.44758916e-02,  6.63610185e-02,  8.31782954e-02, -2.20589710e-03,
-           6.33861892e-03,  6.23903268e-02, -5.61152541e-02, -6.06593880e-02,
-           -4.83270997e-02, -4.56888734e-02, -6.11160250e-02)
+# weights = (4.97823080e+00, -5.99445100e-02, -8.28917853e-02,  9.51229721e-02,
+#            8.44758916e-02,  6.63610185e-02,  8.31782954e-02, -2.20589710e-03,
+#            6.33861892e-03,  6.23903268e-02, -5.61152541e-02, -6.06593880e-02,
+#            -4.83270997e-02, -4.56888734e-02, -6.11160250e-02)
+
+weights = (19.38880218,  -0.75194383,   2.5308827,   -4.92273841,  -8.32640034,
+           7.22375559,   4.34766342,  16.04583651,  15.71129116,  -0.7893731,
+           -10.53626995,  -0.46636963,  -1.64553853, -11.32335832,  -1.99289289)
 
 PEN = set([(1, 0), (1, -1), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 1)])
 ALL_DIR = [(1, 1), (1, -1), (1, 0), (0, 1),
            (0, -1), (-1, 1), (-1, 0), (-1, -1)]
 PEN_LOCS = set()
 
-f = open("machine_learning_test_data", "r")
+f = open("storing_info1", "r")
 rawStates = f.readlines()
 
 rawStates = [i.strip().replace("(", "").replace(")", "").replace(
@@ -69,7 +73,7 @@ def getGrid(size: int):
 
 numSheepPenned: int = 0
 numSheepToPen = 10000
-grid = getGrid(15)
+grid = getGrid(25)
 
 
 def toQuadraticState(normalState):
@@ -90,7 +94,6 @@ for i in range(numSheepToPen):
     while (grid[state[1]][state[2]] or grid[state[3]][state[4]]):
         state = list(states.keys())[Random().randint(0, len(states) - 1)]
     while (True):
-        print(state)
         if (state[1] == state[3] and state[2] == state[4]):
             break
         if state[1] == int((len(grid) - 1)/2) and state[2] == int((len(grid) - 1)/2):

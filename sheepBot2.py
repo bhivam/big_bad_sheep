@@ -5,7 +5,7 @@ import numpy as np
 ALPHA = 0.00005
 
 # reads in all of the states to be trained on
-f = open("storing_info", "r")
+f = open("storing_info1", "r")
 rawStates = f.readlines()
 
 rawStates = [i.strip().replace("(", "").replace(")", "").replace(
@@ -13,7 +13,7 @@ rawStates = [i.strip().replace("(", "").replace(")", "").replace(
 # process the states to make the data easy to work with
 
 # only get the non outlier states so that the model doesn't try to fit infinity
-rawStates = [[int(i[0])/50, int(i[1])/50, int(i[2])/50, int(i[3])/50, float(i[4])]
+rawStates = [[int(i[0])/25, int(i[1])/25, int(i[2])/25, int(i[3])/25, float(i[4])]
              for i in rawStates if float(i[4]) < 9999999 and float(i[4]) > 1]
 
 # x1, x2, x3, x4, all squared values, all pairs of two multiplied together
